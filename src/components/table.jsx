@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { person } from './table.config';
-import { Button, Grid, Input, OrderedList } from './table.components';
+import { personProperties, createPersonObject, sendData, selectInputType } from './table.config';
+import { Button, Input, Select, Row, TableProperties, TopRightCorner } from './table.components';
 
 class Table extends Component {
     state = {
-        persons: [person]
+        persons: [createPersonObject()]
     };
 
-    getObjectKeys = () => Object.keys(person);
+    getObjectKeys = () => personProperties.map(p => p.name);
 
     updateInputValue = (e, key, index, id) => {
         const changeObjectValue = (obj, value) => ({ ...obj, [key]: value });
@@ -21,7 +21,7 @@ class Table extends Component {
     };
 
     buttonHandler = () => {
-        const newPersonsArray = [...this.state.persons, person];
+        const newPersonsArray = [...this.state.persons, createPersonObject()];
 
         this.setState({
             persons: newPersonsArray
@@ -30,34 +30,52 @@ class Table extends Component {
 
     render() {
         const tableProperties = this.getObjectKeys().map((title) =>
-            <td key={title}>
+            <TableProperties key={title}>
                 {title}
-            </td>
+            </TableProperties>
         );
-        const tableValues = this.state.persons.map((person, index) =>
-            <tr key={index}>
-                <OrderedList>{index + 1}</OrderedList>
-                {Object.entries(person).map(([key, value]) =>
+
+        const TableValuesInput = (propertyIndex, value, key, personIndex, id) => {
+            const { type, options } = personProperties[propertyIndex];
+            const onChangeFunction = (e) => this.updateInputValue(e, key, personIndex, id);
+
+            if (type === selectInputType) {
+                return (
+                    <Select onChange={onChangeFunction}>
+                        {options.map((option, index) => <option key={index}>{option}</option>)}
+                    </Select>
+                );
+            }
+
+            return <Input value={value} type={type} onChange={onChangeFunction} />
+        }
+
+        const tableValues = this.state.persons.map((person, personIndex) =>
+            <tr key={personIndex}>
+                <Row>{personIndex + 1}</Row>
+                {Object.entries(person).map(([key, value], propertyIndex) =>
                     <td key={key}>
-                        <Input value={value} onChange={(e) => this.updateInputValue(e, key, index, person.id)} />
+                        {TableValuesInput(propertyIndex, value, key, personIndex, person.id)}
                     </td>
                 )}
             </tr>
         );
         const addRowsButton = <Button onClick={this.buttonHandler}>+</Button>;
+        const sendDataButton = <Button>{sendData}</Button>
 
         return (
             <Fragment>
+                {sendDataButton}
                 {addRowsButton}
-                <Grid>
+                <table>
                     <tbody>
                         <tr>
-                            <td />
+                            <TopRightCorner />
                             {tableProperties}
                         </tr>
                         {tableValues}
                     </tbody>
-                </Grid>
+                </table>
             </Fragment>
         );
     };

@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
   float: left;
-  background-color: #4CAF50;
-  font-size: 35px;
+  background-color: darkseagreen;
+  font-size: 20px;
   color: white;
   padding: 2px 15px;
-  margin: 8px 0;
+  margin: 8px 4px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -17,66 +17,44 @@ export const Button = styled.button`
   }
 `;
 
-export const Grid = styled.table`
-    
+export const TableProperties = styled.td`
+  border-style: solid;
+  border-width: 4px;
+  color: white;
+  border-color: darkseagreen;
+  background-color: #8EBF6F;
+  :hover {
+    background-color: #45a049;
+  }
 `;
 
-export const Input = styled.input`
+export const TopRightCorner = styled(TableProperties)`
+  border-top-right-radius: 18px;
+`;
+
+const styledInputBar = css`
   width: 100%;
   padding: 3px 10px;
-  margin: 3px 0;
+  height: 28px;
+  font-family: sans-serif;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 `;
 
-export const OrderedList = styled.tr`
-  clear: both;
-  list-style: none;
-  padding-left: 2%;
-    margin: 2em 0;
-    padding-top: 1em;
-    display: block;
-    position: relative;
-    /* counter-increment: inst; */
-  ::before {
-    /* content: counter(inst); */
-    background: rgba(255, 150, 0, 0.35);
-    color: #fff;
-    font-size: 1em;
-    font-weight: 700;
-    font-style: italic;
-    text-shadow: 1px 1px rgba(255, 150, 0, 0.5);
-    
-    border-radius: 0 0.675em 0.675em 0;
-    font-size: 1.5em;
-    text-align: center;
-    
-    padding-top: 0;
-    padding-left: 2.25%;
-    left: -5%;
-    top: -0.65em;
-    height: 1.35em;
-    width: 1.35em;
-    position: absolute;
-    
-    transition: all 0.2s ease-in-out;
-    
-    z-index: -1;
-  }
-  @media (min-width: 33em) {
-    :before {
-      border-radius: 50%;
-      font-size: 1.5em;
-      height: 1.35em;
-      margin-left: 2.5%;
-      padding-left: 0;
-      padding-top: 0;
-      top: -0.15em;
-      width: 1.35em;
-      z-index: -1;
-    }
-  }
-`;
+export const Input = styled.input(styledInputBar);
 
+export const Select = styled.select(styledInputBar);
+
+export const Row = styled.td`
+  width: 18px;
+  height: 18px;
+  padding: 5px;
+  background: #fff;
+  border: 2px solid darkseagreen;
+  background-color: #8EBF6F;
+  color: white;
+  text-align: center;
+  font: 16px Arial, sans-serif;
+`;
