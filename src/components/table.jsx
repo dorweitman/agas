@@ -1,20 +1,23 @@
 import React, { Component, Fragment } from 'react';
-import { personProperties, createPersonObject, sendData, selectInputType, redErrorBorder } from './table.config';
+import { personProperties, createPersonObject, sendData, propertyType, redErrorBorder } from './table.config';
 import { Button, Input, Select, Row, TableProperties, TopRightCorner, DeleteButton } from './table.components';
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Table extends Component {
     state = {
         persons: [createPersonObject()],
         deleteMode: false,
         sendDataMode: false,
+        startDate: new Date()
     };
 
     getObjectKeys = () => personProperties.map(p => p.translation);
 
     updateInputValue = (e, key, index, id) => {
         const changeObjectValue = (obj, value) => ({ ...obj, [key]: value });
-
-        const value = e.target.value;
+        const value = e.target ? e.target.value : e;
         const newPersonsArray = this.state.persons.map((el, i) => (el.id === id && index === i) ? changeObjectValue(el, value) : el);
 
         this.setState({
@@ -48,12 +51,12 @@ class Table extends Component {
 
     sendDataButtonHandler = () => {
         const arrayOfValues = this.state.persons.map(p => Object.values(p));
-        const hasEmptyValues = arrayOfValues.flat().filter(value => (value === '' || value === '-')).length > 0; 
+        const hasEmptyValues = arrayOfValues.flat().filter(value => (value === '' || value === '-')).length > 0;
 
-        if(!hasEmptyValues) {
+        if (!hasEmptyValues) {
             console.log('data sent')
         }
-        
+
         this.setState(prevState => ({
             sendDataMode: !prevState.sendDataMode
         }));
@@ -70,12 +73,17 @@ class Table extends Component {
             const { type, options, min, max } = personProperties[propertyIndex];
             const onChangeFunction = (e) => this.updateInputValue(e, key, personIndex, id);
             const styles = {};
+            const badChars = ['', '-', 0];
 
-            if (this.state.sendDataMode && (value === '' || value === '-')) {
+            if (this.state.sendDataMode && badChars.includes(value)) {
                 styles.border = redErrorBorder;
-            } 
+            }
 
-            if (type === selectInputType) {
+            if (type === propertyType.date) {
+                return <DatePicker selected={value} onChange={onChangeFunction} />;
+            }
+
+            if (type === propertyType.select) {
                 return (
                     <Select onChange={onChangeFunction} style={styles}>
                         {options.map((option, index) => <option key={index}>{option}</option>)}
