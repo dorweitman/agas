@@ -17,6 +17,23 @@ export const Button = styled.button`
   }
 `;
 
+export const DeleteButton = styled.button`
+  float: left;
+  background-color: #c20d0dd6;
+  font-size: 20px;
+  color: white;
+  padding: 0px 10px 2px 10px;
+  outline:none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+  position: sticky;
+  :hover {
+    background-color: red;
+  }
+`;
+
 export const TableProperties = styled.td`
   border-style: solid;
   border-width: 4px;

@@ -1,12 +1,13 @@
-const name = { name: 'שם פרטי', default: '', type: 'text' };
-const lastname = { name: 'שם משפחה', default: '', type: 'text' };
-const team = { name: 'צוות', default: '', type: 'text' };
-const id = { name: 'מספר אישי', default: 0, type: 'number' };
-const age = { name: 'גיל', default: 0, type: 'number' };
-const gender = { name: 'מין', default: '-', type: 'select', options: ['-', 'זכר', 'נקבה'] };
+const name = { value: 'name', translation: 'שם פרטי', default: '', type: 'text' };
+const lastname = { value: 'lastname', translation: 'שם משפחה', default: '', type: 'text' };
+const team = { value: 'team', translation: 'צוות', default: '', type: 'text' };
+const id = { value: 'id', translation: 'מספר אישי', default: 0, type: 'number', min: 0 };
+const age = { value: 'age', translation: 'גיל', default: 0, type: 'number', min: 0, max: 99 };
+const gender = { value: 'gender', translation: 'מין', default: '', type: 'select', options: ['-', 'זכר', 'נקבה'] };
 
 const sendData = 'שלח/י מידע';
 const selectInputType = 'select';
+const redErrorBorder = '2px solid red';
 
 const personProperties = [name, lastname, team, id, age, gender];
 
@@ -14,7 +15,7 @@ const createPersonObject = () => {
     const personObject = {};
 
     for (const p of personProperties) {
-        personObject[p.name] = p.default;
+        personObject[p.value] = p.default;
     }
 
     return personObject;
@@ -22,6 +23,7 @@ const createPersonObject = () => {
 
 module.exports = {
     createPersonObject,
+    redErrorBorder,
     personProperties,
     sendData,
     selectInputType,

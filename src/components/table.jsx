@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import { personProperties, createPersonObject, sendData, selectInputType } from './table.config';
-import { Button, Input, Select, Row, TableProperties, TopRightCorner } from './table.components';
+import { personProperties, createPersonObject, sendData, selectInputType, redErrorBorder } from './table.config';
+import { Button, Input, Select, Row, TableProperties, TopRightCorner, DeleteButton } from './table.components';
 
 class Table extends Component {
     state = {
-        persons: [createPersonObject()]
+        persons: [createPersonObject()],
+        deleteMode: false,
+        sendDataMode: false,
     };
 
-    getObjectKeys = () => personProperties.map(p => p.name);
+    getObjectKeys = () => personProperties.map(p => p.translation);
 
     updateInputValue = (e, key, index, id) => {
         const changeObjectValue = (obj, value) => ({ ...obj, [key]: value });
@@ -20,12 +22,41 @@ class Table extends Component {
         });
     };
 
-    buttonHandler = () => {
+    addRowButtonHandler = () => {
         const newPersonsArray = [...this.state.persons, createPersonObject()];
 
         this.setState({
             persons: newPersonsArray
         });
+    };
+
+    removeRowOptionHandler = () => {
+        if (this.state.persons.length > 1) {
+            this.setState(prevState => ({
+                deleteMode: !prevState.deleteMode
+            }));
+        }
+    };
+
+    removeRowButtonHandler = (personIndex) => {
+        if (this.state.persons.length > 1) {
+            this.setState({
+                persons: this.state.persons.slice(0, personIndex).concat(this.state.persons.slice(personIndex + 1)),
+            });
+        }
+    };
+
+    sendDataButtonHandler = () => {
+        const arrayOfValues = this.state.persons.map(p => Object.values(p));
+        const hasEmptyValues = arrayOfValues.flat().filter(value => (value === '' || value === '-')).length > 0; 
+
+        if(!hasEmptyValues) {
+            console.log('data sent')
+        }
+        
+        this.setState(prevState => ({
+            sendDataMode: !prevState.sendDataMode
+        }));
     };
 
     render() {
@@ -36,19 +67,28 @@ class Table extends Component {
         );
 
         const TableValuesInput = (propertyIndex, value, key, personIndex, id) => {
-            const { type, options } = personProperties[propertyIndex];
+            const { type, options, min, max } = personProperties[propertyIndex];
             const onChangeFunction = (e) => this.updateInputValue(e, key, personIndex, id);
+            const styles = {};
+
+            if (this.state.sendDataMode && (value === '' || value === '-')) {
+                styles.border = redErrorBorder;
+            } 
 
             if (type === selectInputType) {
                 return (
-                    <Select onChange={onChangeFunction}>
+                    <Select onChange={onChangeFunction} style={styles}>
                         {options.map((option, index) => <option key={index}>{option}</option>)}
                     </Select>
                 );
             }
 
-            return <Input value={value} type={type} onChange={onChangeFunction} />
+            return <Input value={value} type={type} style={styles} onChange={onChangeFunction} min={min} max={max} />;
         }
+
+        const addRowsButton = <Button onClick={this.addRowButtonHandler}>+</Button>;
+        const removeRowsButton = <Button onClick={this.removeRowOptionHandler}>-</Button>;
+        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{sendData}</Button>
 
         const tableValues = this.state.persons.map((person, personIndex) =>
             <tr key={personIndex}>
@@ -58,15 +98,17 @@ class Table extends Component {
                         {TableValuesInput(propertyIndex, value, key, personIndex, person.id)}
                     </td>
                 )}
+                <td>
+                    {this.state.deleteMode && <DeleteButton onClick={() => this.removeRowButtonHandler(personIndex)}>-</DeleteButton>}
+                </td>
             </tr>
         );
-        const addRowsButton = <Button onClick={this.buttonHandler}>+</Button>;
-        const sendDataButton = <Button>{sendData}</Button>
 
         return (
             <Fragment>
                 {sendDataButton}
                 {addRowsButton}
+                {removeRowsButton}
                 <table>
                     <tbody>
                         <tr>
