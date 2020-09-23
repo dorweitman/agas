@@ -24,12 +24,20 @@ class Table extends Component {
         sendDataMode: false
     };
 
-    getObjectKeys = () => this.props.properties.map(property => property.translation);
+    getObjectKeys = () => {
+        return this.props.properties.map(property => property.translation);
+    };
 
-    updateInputValue = (e, key, index, id) => { //////////////
-        const changeObjectValue = (obj, value) => ({ ...obj, [key]: value });
+    updateInputValue = (e, key, index, same) => {
         const value = e.target ? e.target.value : e;
-        const newObjectsArray = this.state.objects.map((el, i) => (el.id === id && index === i) ? changeObjectValue(el, value) : el);
+
+        let newObjectsArray = [...this.state.objects];
+
+        if (same) {
+            newObjectsArray = newObjectsArray.map(el => ({ ...el, [key]: value }));
+        } else {
+            newObjectsArray[index][key] = value;
+        }
 
         this.setState({
             objects: newObjectsArray
@@ -55,7 +63,9 @@ class Table extends Component {
     removeRowButtonHandler = (objectIndex) => {
         if (this.state.objects.length > 1) {
             this.setState({
-                objects: this.state.objects.slice(0, objectIndex).concat(this.state.objects.slice(objectIndex + 1)),
+                objects: this.state.objects
+                    .slice(0, objectIndex)
+                    .concat(this.state.objects.slice(objectIndex + 1))
             });
         }
     };
@@ -63,14 +73,24 @@ class Table extends Component {
     sendDataButtonHandler = () => {
         const arrayOfValues = this.state.objects.map(obj => Object.values(obj));
         const hasEmptyValues = arrayOfValues.flat().includes(...badChars);
-
+        console.log(this.state.objects); 
+        console.log(JSON.stringify(this.state.objects))
         if (!hasEmptyValues) {
-            console.log('data sent');
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: this.state.objects
+            // }).then(response => {
+            //     console.log(response);
+            // }); 
         }
 
         this.setState(prevState => ({
             sendDataMode: !prevState.sendDataMode
         }));
+
     };
 
     render() {
@@ -78,10 +98,12 @@ class Table extends Component {
             <TableProperties key={title}>{title}</TableProperties>
         );
 
-        const TableValuesInput = (value, propertyIndex, onChangeFunction) => {
-            const { type, options, min, max } = this.props.properties[propertyIndex];
+        const TableValuesInput = (value, propertyIndex, key, objectIndex) => {
+            const { type, options, min, max, same } = this.props.properties[propertyIndex];
             const { timer, date, select } = propertyType;
             const styles = {};
+
+            const onChangeFunction = (e) => this.updateInputValue(e, key, objectIndex, same);
 
             if (this.state.sendDataMode && badChars.includes(value)) {
                 styles.border = redErrorBorder;
@@ -103,7 +125,7 @@ class Table extends Component {
                 <Row>{objectIndex + 1}</Row>
                 {Object.entries(object).map(([key, value], propertyIndex) =>
                     <td key={key}>
-                        {TableValuesInput(value, propertyIndex, (e) => this.updateInputValue(e, key, objectIndex, object.id))}
+                        {TableValuesInput(value, propertyIndex, key, objectIndex)}
                     </td>
                 )}
                 <td>
@@ -119,7 +141,7 @@ class Table extends Component {
         return (
             <>
                 {sendDataButton}
-                {addRowsButton} 
+                {addRowsButton}
                 {removeRowsButton}
                 <table>
                     <tbody>

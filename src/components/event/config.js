@@ -2,30 +2,14 @@ const date = {
     value: 'date',
     translation: 'תאריך',
     default: new Date(),
-    type: 'date',
+    type: 'date',   
 };
-const eventType = {
-    value: 'eventType',
-    translation: 'סוג אירוע',
-    default: '',
+const eventName = {
+    value: 'eventName',
+    translation: 'אירוע',
+    default: 'קמ"נים בראור פתיחה',
     type: 'select',
-    options: ['-', 'שכיבות סמיכה', 'ריצה'],
-};
-const endTime = {
-    value: 'endTime',
-    translation: 'זמן סיום',
-    default: 0,
-    type: 'timer',
-    min: 0,
-    max: 59,
-};
-const startTime = {
-    value: 'startTime',
-    translation: 'זמן התחלה',
-    default: 0,
-    type: 'timer',
-    min: 0,
-    max: 59,
+    options: ['קמ"נים בראור סוף', 'קמ"נים בראור פתיחה'],
 };
 const id = {
     value: 'id',
@@ -34,13 +18,20 @@ const id = {
     type: 'number',
     min: 0,
 };
+const moed = {
+    value: 'moed',
+    translation: 'מועד',
+    default: 'ב',
+    type: 'select',
+    options: ['א', 'ב', 'ג'],
+};
 
+const eventType = { baror: 'baror', pushUps: 'pushUps' };
 const properties = [
-    eventType,
-    date, 
-    startTime,
-    endTime,
+    eventName,      
+    moed,
+    date,   
     id,
 ];
 
-module.exports = properties; 
+module.exports = { properties, eventType }; 

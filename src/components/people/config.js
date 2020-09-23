@@ -19,7 +19,7 @@ const id = {
 };
 const age = {
     value: 'age',
-    translation: 'גיל',
+    translation: 'תאריך לידה',
     default: new Date(),
     type: 'date',
 };

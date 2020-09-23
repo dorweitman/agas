@@ -17,6 +17,11 @@
     color: white;
 }
 
+.navLinkActive {
+    background-color: #4CAF50;
+    color: white;
+}
+
 .right {
     float: right;
     padding: 5px 0px 5px 0px;
