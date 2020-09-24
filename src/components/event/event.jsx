@@ -27,10 +27,10 @@ const PushUpsTable = () => {
 const Tables = () => {
     return (
         <>
-            <NavLink to='/event/baror' className='navLink nested right' activeClassName='navLinkActive'>
+            <NavLink to='/event/baror' className='navLink nested right borderanimation' activeClassName='navLinkActive'>
                 <img src={runningImage} alt="runningImage" width="50%" height="300px" />
             </NavLink>
-            <NavLink to='/event/pushUps' className='navLink nested right' activeClassName='navLinkActive'>
+            <NavLink to='/event/pushUps' className='navLink nested right borderanimation' activeClassName='navLinkActive'>
                 <img src={pushUpsImage} alt="pushUpsImage" width="50%" height="300px" />
             </NavLink>
             <Switch>
