@@ -8,8 +8,8 @@ import { properties } from './config';
 import barorProperties from './config/baror';
 import pushUpProperties from './config/pushUps';
 
-import pushUpsImage from '../../assets/images/push-up-exercise-illustration.gif';
-import runningImage from '../../assets/images/running.gif';
+import pushUpsImage from '../../assets/images/push-up.jpg';
+import runningImage from '../../assets/images/runner.jpg';
 
 const BarorTable = () => {
     const defaultTime = moment().startOf('day');
@@ -28,10 +28,10 @@ const Tables = () => {
     return (
         <>
             <NavLink to='/event/baror' className='navLink nested right' activeClassName='navLinkActive'>
-                <img src={runningImage} alt="runningImage" width="300" height="333" />
+                <img src={runningImage} alt="runningImage" width="50%" height="300px" />
             </NavLink>
             <NavLink to='/event/pushUps' className='navLink nested right' activeClassName='navLinkActive'>
-                <img src={pushUpsImage} alt="pushUpsImage" width="300" height="333" />
+                <img src={pushUpsImage} alt="pushUpsImage" width="50%" height="300px" />
             </NavLink>
             <Switch>
                 <Route path='/event/baror' component={BarorTable} />
@@ -40,9 +40,5 @@ const Tables = () => {
         </>
     );
 };
-
-// const moment  = require('moment')
-// const defaultTime = moment().startOf('day');
-// console.log(defaultTime.format('hh:mm:ss'))
 
 export default Tables; 

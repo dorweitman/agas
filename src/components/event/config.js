@@ -2,14 +2,15 @@ const date = {
     value: 'date',
     translation: 'תאריך',
     default: new Date(),
-    type: 'date',   
+    type: 'date',
+    same: true,   
 };
 const eventName = {
     value: 'eventName',
     translation: 'אירוע',
-    default: 'קמ"נים בראור פתיחה',
+    default: 'קמ"נים פתיחה',
     type: 'select',
-    options: ['קמ"נים בראור סוף', 'קמ"נים בראור פתיחה'],
+    options: ['קמ"נים סוף', 'קמ"נים פתיחה'],
 };
 const id = {
     value: 'id',
@@ -23,7 +24,7 @@ const moed = {
     translation: 'מועד',
     default: 'ב',
     type: 'select',
-    options: ['א', 'ב', 'ג'],
+    options: ['א', 'ב', 'מיוחד'],
 };
 
 const eventType = { baror: 'baror', pushUps: 'pushUps' };
