@@ -115,7 +115,7 @@ class Table extends Component {
                             <option key={optionKey} value={optionKey}>{optionValue}</option>
                         )}
                     </Select>);
-                default: return <Input value={value} type={type} style={styles} onChange={onChangeFunction} min={min} max={max} />;
+                default: return <Input value={value} style={styles} onChange={onChangeFunction} min={min} max={max} />;
             }
         };
 
