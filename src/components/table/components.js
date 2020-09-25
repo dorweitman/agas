@@ -58,6 +58,9 @@ const styledInputBar = css`
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  :focus {
+    background-color: #f2f2f2;
+  }
 `;
 
 export const Input = styled.input(styledInputBar);

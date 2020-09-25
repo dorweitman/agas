@@ -4,4 +4,4 @@ const config = {
     people: '/people',
 }; 
 
-export default config; 
+module.exports = config; 

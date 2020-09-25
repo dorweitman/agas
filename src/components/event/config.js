@@ -3,14 +3,15 @@ const date = {
     translation: 'תאריך',
     default: new Date(),
     type: 'date',
-    same: true,   
+    same: true,
 };
 const eventName = {
     value: 'eventName',
     translation: 'אירוע',
-    default: 'קמ"נים פתיחה',
+    default: 'first',
     type: 'select',
-    options: ['קמ"נים סוף', 'קמ"נים פתיחה'],
+    options: { first: 'קמ"נים פתיחה', final: 'קמ"נים סוף' },
+    same: true,
 };
 const id = {
     value: 'id',
@@ -22,17 +23,18 @@ const id = {
 const moed = {
     value: 'moed',
     translation: 'מועד',
-    default: 'ב',
+    default: 'a',
     type: 'select',
-    options: ['א', 'ב', 'מיוחד'],
+    options: { a: 'א', b: 'ב', special: 'מיוחד' },
+    same: true,
 };
 
-const eventType = { baror: 'baror', pushUps: 'pushUps' };
+const route = { baror: 'event/baror', pushUps: 'event/pushUps' };
 const properties = [
-    eventName,      
+    eventName,
     moed,
-    date,   
+    date,
     id,
 ];
 
-module.exports = { properties, eventType }; 
+module.exports = { properties, route }; 

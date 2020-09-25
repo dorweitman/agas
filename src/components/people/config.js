@@ -26,9 +26,9 @@ const age = {
 const gender = {
     value: 'gender',
     translation: 'מין',
-    default: '',
+    default: '-',
     type: 'select',
-    options: ['-', 'זכר', 'נקבה'],
+    options: { default: '-', male: 'זכר', female: 'נקבה' },
 };
 const name = {
     value: 'name',
@@ -37,6 +37,7 @@ const name = {
     type: 'text',
 };
 
+const route = 'people';
 const properties = [
     name,
     lastname,
@@ -46,4 +47,4 @@ const properties = [
     gender,
 ];
 
-module.exports = properties; 
+module.exports = { properties, route }; 

@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import { sendData, propertyType, redErrorBorder, direction, badChars } from './config';
 import { createObject } from './transform';
+import { url } from '../../config';
 import { saveData } from '../../client';
 import {
     Button,
@@ -22,7 +23,8 @@ class Table extends Component {
         objects: [createObject(this.props.properties)],
         startDate: new Date(),
         deleteMode: false,
-        sendDataMode: false
+        sendDataMode: false,
+        optionChangeMode: false,    
     };
 
     getObjectKeys = () => {
@@ -30,10 +32,10 @@ class Table extends Component {
     };
 
     updateInputValue = (e, key, index, same) => {
-        const value = e.target ? e.target.value : e;
+        const value = e.target ? e.target.value : e
 
         let newObjectsArray = [...this.state.objects];
-
+        
         if (same) {
             newObjectsArray = newObjectsArray.map(el => ({ ...el, [key]: value }));
         } else {
@@ -72,25 +74,21 @@ class Table extends Component {
     };
 
     sendDataButtonHandler = () => {
-        const arrayOfValues = this.state.objects.map(obj => Object.values(obj));
-        const hasEmptyValues = arrayOfValues.flat().includes(...badChars);
-        console.log(this.state.objects); 
-        console.log(JSON.stringify(this.state.objects))
-        if (!hasEmptyValues) {
-            // fetch(url, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: this.state.objects
-            // }).then(response => {
-            //     console.log(response);
-            // }); 
-        }
+        const arrayOfValues = this.state.objects.map(Object.values);
+        const hasEmptyValues = arrayOfValues.flat().some(elem => badChars.includes(elem));
 
         this.setState(prevState => ({
             sendDataMode: !prevState.sendDataMode
-        }));
+        }), () => {
+            if (!hasEmptyValues) {
+                console.log(this.state.objects);
+
+                saveData(`${url}/${this.props.route}`, this.state.objects)
+                    .then(res => {
+                        console.log(res);
+                    });
+            }
+        });
 
     };
 
@@ -99,12 +97,10 @@ class Table extends Component {
             <TableProperties key={title}>{title}</TableProperties>
         );
 
-        const TableValuesInput = (value, propertyIndex, key, objectIndex) => {
-            const { type, options, min, max, same } = this.props.properties[propertyIndex];
+        const TableValuesInput = (value, property, onChangeFunction) => {
+            const { value: propertyName, type, options, min, max } = property;
             const { timer, date, select } = propertyType;
             const styles = {};
-
-            const onChangeFunction = (e) => this.updateInputValue(e, key, objectIndex, same);
 
             if (this.state.sendDataMode && badChars.includes(value)) {
                 styles.border = redErrorBorder;
@@ -114,21 +110,24 @@ class Table extends Component {
                 case timer: return <TimePicker onChange={onChangeFunction} style={{ direction }} defaultValue={this.props.defaultTime} />;
                 case date: return <DatePicker selected={value} onChange={onChangeFunction} />;
                 case select: return (
-                    <Select onChange={onChangeFunction} style={styles}>
-                        {options.map((option) => <option key={option}>{option}</option>)}
+                    <Select onChange={onChangeFunction} style={styles} value={this.state.objects[0][propertyName]}>
+                        {Object.entries(options).map(([optionKey, optionValue]) =>
+                            <option key={optionKey} value={optionKey}>{optionValue}</option>
+                        )}
                     </Select>);
-                default: return <Input value={value} type={type} style={styles} onChange={onChangeFunction} min={min} max={max} />
+                default: return <Input value={value} type={type} style={styles} onChange={onChangeFunction} min={min} max={max} />;
             }
         };
 
         const tableValues = this.state.objects.map((object, objectIndex) =>
             <tr key={objectIndex}>
                 <Row>{objectIndex + 1}</Row>
-                {Object.entries(object).map(([key, value], propertyIndex) =>
-                    <td key={key}>
-                        {TableValuesInput(value, propertyIndex, key, objectIndex)}
-                    </td>
-                )}
+                {Object.entries(object).map(([key, value], propertyIndex) => {
+                    const property = this.props.properties[propertyIndex];
+                    const onChangeFunction = (e) => this.updateInputValue(e, key, objectIndex, property.same);
+
+                    return <td key={key}> {TableValuesInput(value, property, onChangeFunction)} </td>;
+                })}
                 <td>
                     {this.state.deleteMode && <DeleteButton onClick={() => this.removeRowButtonHandler(objectIndex)}>-</DeleteButton>}
                 </td>
