@@ -1,3 +1,6 @@
+import barorProperties from './baror';
+import pushUpProperties from './pushUps';
+
 const date = {
     value: 'date',
     translation: 'תאריך',
@@ -30,11 +33,12 @@ const moed = {
 };
 
 const route = { baror: 'event/baror', pushUps: 'event/pushUps' };
-const properties = [
-    eventName,
-    moed,
-    date,
-    id,
-];
+const properties = [eventName, moed, date, id];
+const barorTableProperties = [...properties, ...barorProperties];
+const pushUpTableProperties = [...properties, ...pushUpProperties];
 
-module.exports = { properties, route }; 
+export {
+    route,
+    barorTableProperties,
+    pushUpTableProperties,
+}; 

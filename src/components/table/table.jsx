@@ -13,7 +13,7 @@ import {
     TableProperties,
     TopRightCorner,
     DeleteButton
-} from './components';
+} from './styled-components';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import 'rc-time-picker/assets/index.css';
