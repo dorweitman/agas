@@ -24,7 +24,6 @@ class Table extends Component {
         startDate: new Date(),
         deleteMode: false,
         sendDataMode: false,
-        optionChangeMode: false,    
     };
 
     getObjectKeys = () => {
@@ -93,9 +92,7 @@ class Table extends Component {
     };
 
     render() {
-        const tableProperties = this.getObjectKeys().map((title) =>
-            <TableProperties key={title}>{title}</TableProperties>
-        );
+        const tableProperties = this.getObjectKeys().map(title => <TableProperties key={title}>{title}</TableProperties>);
 
         const TableValuesInput = (value, property, onChangeFunction) => {
             const { value: propertyName, type, options, min, max } = property;
