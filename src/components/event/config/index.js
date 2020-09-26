@@ -8,8 +8,8 @@ const date = {
     type: 'date',
     same: true,
 };
-const eventName = {
-    value: 'eventName',
+const name = {
+    value: 'name',
     translation: 'אירוע',
     default: 'first',
     type: 'select',
@@ -33,7 +33,7 @@ const moed = {
 };
 
 const route = { baror: 'event/baror', pushUps: 'event/pushUps' };
-const properties = [eventName, moed, date, id];
+const properties = [name, moed, date, id];
 const barorTableProperties = [...properties, ...barorProperties];
 const pushUpTableProperties = [...properties, ...pushUpProperties];
 
