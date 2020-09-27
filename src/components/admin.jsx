@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Tables from './event/event';
-import Person from './people/people';
+import Person from './person/person';
 import { StyledNavLink } from './styled-components';
 
 import { translation } from '../config';

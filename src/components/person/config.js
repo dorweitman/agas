@@ -1,5 +1,7 @@
+import { formatDate } from '../../utils';
+
 const lastname = {
-    value: 'lastname',
+    value: 'last_name',
     translation: 'שם משפחה',
     default: '',
     type: 'text',
@@ -11,16 +13,16 @@ const team = {
     type: 'text',
 };
 const id = {
-    value: 'id',
+    value: 'army_id',
     translation: 'מספר אישי',
     default: 0,
     type: 'number',
     min: 0,
 };
-const age = {
-    value: 'age',
+const birthDate = {
+    value: 'birth_date',
     translation: 'תאריך לידה',
-    default: new Date(),
+    default: formatDate(new Date()),
     type: 'date',
 };
 const gender = {
@@ -30,21 +32,21 @@ const gender = {
     type: 'select',
     options: { default: '-', male: 'זכר', female: 'נקבה' },
 };
-const name = {
-    value: 'name',
+const firstname = {
+    value: 'first_name',
     translation: 'שם פרטי',
     default: '',
     type: 'text',
 };
 
-const route = 'people';
+const route = 'person';
 const properties = [
-    name,
+    firstname,
     lastname,
     team,
     id,
-    age,
+    birthDate,
     gender,
 ];
 
-module.exports = { properties, route }; 
+export { properties, route }; 

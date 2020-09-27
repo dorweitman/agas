@@ -4,7 +4,7 @@ const createObject = (properties) => {
     for (const property of properties) {
         obj[property.value] = property.default;
     }
-    
+
     return obj;
 };
 

@@ -1,12 +1,13 @@
-import barorProperties from './baror';
+import runProperties from './run';
 import pushUpProperties from './pushUps';
+import { formatDate } from '../../../utils';
 
 const date = {
-    value: 'date',
+    value: 'event_date',
     translation: 'תאריך',
-    default: new Date(),
+    default: formatDate(new Date()),
     type: 'date',
-    same: true,
+    repetitive: true,
 };
 const name = {
     value: 'name',
@@ -14,10 +15,10 @@ const name = {
     default: 'first',
     type: 'select',
     options: { first: 'קמ"נים פתיחה', final: 'קמ"נים סוף' },
-    same: true,
+    repetitive: true,
 };
 const id = {
-    value: 'id',
+    value: 'army_id',
     translation: 'מספר אישי',
     default: 0,
     type: 'number',
@@ -29,16 +30,16 @@ const moed = {
     default: 'a',
     type: 'select',
     options: { a: 'א', b: 'ב', special: 'מיוחד' },
-    same: true,
+    repetitive: true,
 };
 
-const route = { baror: 'event/baror', pushUps: 'event/pushUps' };
+const route = { run: 'event/run', pushUps: 'event/pushups' };
 const properties = [name, moed, date, id];
-const barorTableProperties = [...properties, ...barorProperties];
+const runTableProperties = [...properties, ...runProperties];
 const pushUpTableProperties = [...properties, ...pushUpProperties];
 
 export {
     route,
-    barorTableProperties,
+    runTableProperties,
     pushUpTableProperties,
 }; 

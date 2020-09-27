@@ -1,7 +1,7 @@
 const config = {
-    url: 'http://localhost:4000',
+    url: 'http://localhost:5000',
     event: '/event',
-    people: '/people',
+    person: '/person',
     translation: {
         soldier: 'חייל/ת',
         event: 'אירוע',

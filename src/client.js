@@ -2,7 +2,10 @@ import axios from 'axios';
 import config from './config';
 
 const instance = axios.create({
-    baseURL: config.url
+    baseURL: config.url,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
 
 export const saveData = async (url, data) => {

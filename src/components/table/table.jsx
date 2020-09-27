@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import { sendData, propertyType, redErrorBorder, direction, badChars } from './config';
 import { createObject } from './transform';
+import { formatDate, formatMoment } from '../../utils';
 import { url } from '../../config';
 import { saveData } from '../../client';
 import {
@@ -21,7 +22,6 @@ import 'rc-time-picker/assets/index.css';
 class Table extends Component {
     state = {
         objects: [createObject(this.props.properties)],
-        startDate: new Date(),
         deleteMode: false,
         sendDataMode: false,
     };
@@ -30,12 +30,21 @@ class Table extends Component {
         return this.props.properties.map(property => property.translation);
     };
 
-    updateInputValue = (e, key, index, same) => {
-        const value = e.target ? e.target.value : e
+    updateInputValue = (e, key, index, property) => {
+        const { repetitive, type } = property;
 
+        let value = e.target ? e.target.value : e;
         let newObjectsArray = [...this.state.objects];
-        
-        if (same) {
+
+        if (type === propertyType.date) {
+            value = formatDate(value);
+        }
+
+        if (type === propertyType.timer) {
+            value = formatMoment(value);
+        }
+
+        if (repetitive) {
             newObjectsArray = newObjectsArray.map(el => ({ ...el, [key]: value }));
         } else {
             newObjectsArray[index][key] = value;
@@ -105,7 +114,7 @@ class Table extends Component {
 
             switch (type) {
                 case timer: return <TimePicker onChange={onChangeFunction} style={{ direction }} defaultValue={this.props.defaultTime} />;
-                case date: return <DatePicker selected={value} onChange={onChangeFunction} />;
+                case date: return <DatePicker selected={new Date(value)} onChange={onChangeFunction} />;
                 case select: return (
                     <Select onChange={onChangeFunction} style={styles} value={this.state.objects[0][propertyName]}>
                         {Object.entries(options).map(([optionKey, optionValue]) =>
@@ -121,7 +130,7 @@ class Table extends Component {
                 <Row>{objectIndex + 1}</Row>
                 {Object.entries(object).map(([key, value], propertyIndex) => {
                     const property = this.props.properties[propertyIndex];
-                    const onChangeFunction = (e) => this.updateInputValue(e, key, objectIndex, property.same);
+                    const onChangeFunction = (e) => this.updateInputValue(e, key, objectIndex, property);
 
                     return <td key={key}> {TableValuesInput(value, property, onChangeFunction)} </td>;
                 })}

@@ -1,5 +1,5 @@
 const endTime = {
-    value: 'endTime',
+    value: 'end_time',
     translation: 'זמן סיום',
     default: 0,
     type: 'timer',
@@ -7,7 +7,7 @@ const endTime = {
     max: 59,
 };
 const startTime = {
-    value: 'startTime',
+    value: 'start_time',
     translation: 'זמן התחלה',
     default: 0,
     type: 'timer',
