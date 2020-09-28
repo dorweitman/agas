@@ -14,6 +14,7 @@ const config = {
         feed: 'הודעות',
         graphs: 'גרפים',
         getInTouch: 'צור קשר',
+        admin: 'מנהל',
     }
 }; 
 

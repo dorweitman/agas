@@ -40,8 +40,8 @@ export const SideBarImg = styled.img`
 export const SideBarCompanyImg = styled.img`
     margin: 70px auto 10px auto;
     position: initial;  
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
 `;
 
 export const UserNameHeader = styled.h2`

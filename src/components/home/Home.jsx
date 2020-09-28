@@ -12,6 +12,7 @@ import messageImg from '../../assets/images/message.jpg';
 import graphImg from '../../assets/images/graph.jpg';
 import personImg from '../../assets/images/person.jpg';
 import contactImg from '../../assets/images/contact.jpg';
+import adminImg from '../../assets/images/admin.png';
 
 const HomePage = (props) => (
     <>
@@ -20,6 +21,7 @@ const HomePage = (props) => (
         <SideBarWrapper>
             <SideBar>
                 <App><SideBarImg src={personImg} alt='personImg' />{translation.individualPage}</App>
+                <App><SideBarImg src={adminImg} alt='adminImg' />{translation.admin}</App>
                 <App><SideBarImg src={messageImg} alt='messageImg' />{translation.feed}</App>
                 <App><SideBarImg src={graphImg} alt='graphImg' />{translation.graphs}</App>
                 <App><SideBarImg src={contactImg} alt='contactImg' />{translation.getInTouch}</App>
