@@ -3,14 +3,14 @@ import pushUpProperties from './pushUps';
 import { formatDate } from '../../../utils';
 
 const date = {
-    value: 'event_date',
+    name: 'event_date',
     translation: 'תאריך',
     default: formatDate(new Date()),
     type: 'date',
     repetitive: true,
 };
 const name = {
-    value: 'name',
+    name: 'name',
     translation: 'אירוע',
     default: 'first',
     type: 'select',
@@ -18,14 +18,14 @@ const name = {
     repetitive: true,
 };
 const id = {
-    value: 'army_id',
+    name: 'army_id',
     translation: 'מספר אישי',
     default: 0,
     type: 'number',
     min: 0,
 };
 const moed = {
-    value: 'moed',
+    name: 'moed',
     translation: 'מועד',
     default: 'a',
     type: 'select',

@@ -1,5 +1,5 @@
 const number = {
-    value: 'pushups',
+    name: 'pushups',
     translation: 'מספר חזרות',
     default: 0,
     type: 'number',
