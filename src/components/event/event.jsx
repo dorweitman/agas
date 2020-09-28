@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 import Table from '../table/table';
-import { Img, StyledNavLink } from '../styled-components';
+import { Img } from './styled-components';
 
 import { route, runTableProperties, pushUpTableProperties } from './config';
 
@@ -22,12 +22,12 @@ const PushUpsTable = () => {
 
 const Tables = () => (
     <>
-        <StyledNavLink to='/event/run' className='nested borderAnimation' activeClassName='navLinkActive'>
+        <NavLink exact to='/event/run' className='navLink nested' activeClassName='borderAnimation'>
             <Img src={runningImage} alt='runningImage' />
-        </StyledNavLink>
-        <StyledNavLink to='/event/pushUps' className='nested borderAnimation' activeClassName='navLinkActive'>
+        </NavLink>
+        <NavLink exact to='/event/pushUps' className='navLink nested' activeClassName='borderAnimation'>
             <Img src={pushUpsImage} alt='pushUpsImage' />
-        </StyledNavLink>
+        </NavLink>
         <Switch>
             <Route path='/event/run' component={RunTable} />
             <Route path='/event/pushUps' component={PushUpsTable} />

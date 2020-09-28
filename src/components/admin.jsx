@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
 import Tables from './event/event';
 import Person from './person/person';
-import { StyledNavLink } from './styled-components';
 
 import { translation } from '../config';
 
@@ -14,8 +13,8 @@ class AdminPage extends Component {
         return (
             <Router>
                 <div>
-                    <StyledNavLink exact to='/person' activeClassName='navLinkActive'>{translation.soldier}</StyledNavLink>
-                    <StyledNavLink exact to='/event' activeClassName='navLinkActive'>{translation.event}</StyledNavLink>
+                    <NavLink to='/person' className='navLink' activeClassName='navLinkActive'>{translation.soldier}</NavLink>
+                    <NavLink to='/event' className='navLink' activeClassName='navLinkActive'>{translation.event}</NavLink>
                     <Switch>
                         <Route path='/person' component={Person} />
                         <Route path='/event' component={Tables} />

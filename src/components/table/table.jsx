@@ -111,7 +111,7 @@ class Table extends Component {
     render() {
         const tableProperties = this.getObjectKeys().map(title => <TableProperties key={title}>{title}</TableProperties>);
 
-        const TableValuesInput = (objectIndex, value, property) => {
+        const TableCell = (objectIndex, value, property) => {
             const { name, type, repetitive, options, min, max } = property;
             const { timer, date, select } = propertyType;
             const styles = {};
@@ -141,7 +141,7 @@ class Table extends Component {
                 {Object.entries(object).map(([key, value], propertyIndex) => {
                     const property = this.props.properties[propertyIndex];
 
-                    return <td key={key}> {TableValuesInput(objectIndex, value, property)} </td>;
+                    return <td key={key}>{TableCell(objectIndex, value, property)}</td>;
                 })}
                 <td>
                     {this.state.deleteMode && <DeleteButton onClick={() => this.removeRowButtonHandler(objectIndex)}>-</DeleteButton>}
