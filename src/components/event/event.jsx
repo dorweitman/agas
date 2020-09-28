@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import moment from 'moment';
 
 import Table from '../table/table';
@@ -22,12 +22,8 @@ const PushUpsTable = () => {
 
 const Tables = () => (
     <>
-        <StyledNavLink exact to='/event/run'>
-            <Img src={runningImage} alt='runningImage' />
-        </StyledNavLink>
-        <StyledNavLink exact to='/event/pushUps'>
-            <Img src={pushUpsImage} alt='pushUpsImage' />
-        </StyledNavLink>
+        <StyledNavLink exact to='/event/run'><Img src={runningImage} alt='runningImage' /></StyledNavLink>
+        <StyledNavLink exact to='/event/pushUps'><Img src={pushUpsImage} alt='pushUpsImage' /></StyledNavLink>
         <Switch>
             <Route path='/event/run' component={RunTable} />
             <Route path='/event/pushUps' component={PushUpsTable} />
