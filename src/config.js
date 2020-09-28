@@ -10,6 +10,9 @@ const config = {
         loading: 'טוען...',
         hello: 'שלום, ',
         kamanatonCopyright: 'Kamanaton © ',
+        individualPage: 'אזור אישי',
+        feed: 'הודעות',
+        graphs: 'גרפים',
     }
 }; 
 

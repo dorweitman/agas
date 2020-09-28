@@ -19,3 +19,13 @@ h2 {
     top: 18px !important;  
     text-align: center;
 }
+
+.sideBar {
+    width: 300px;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
