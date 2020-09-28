@@ -5,22 +5,6 @@ body {
     font-size: medium;
 }
 
-.companyImg {
-    margin: 70px auto 10px auto;
-    position: initial;  
-    height: 70px;
-    width: 70px;
-}
-
-.sideBarImg {
-    position: initial;  
-    height: 70px;
-    width: 70px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 h2 {
     float: right;
     background-color: darkseagreen;
@@ -34,33 +18,4 @@ h2 {
     position: initial;  
     top: 18px !important;  
     text-align: center;
-}
-
-.sideBarTabs {
-    background-color: white;
-    font-size: 20px;
-    font-weight: lighter;
-    color: darkseagreen;
-    padding: 2px 15px;
-    margin: 4px auto 4px auto;
-    border: none;
-    border-radius: 20px;
-    position: initial;  
-    top: 18px !important;  
-    text-align: center;
-    border: 1px solid darkseagreen;
-}
-
-.sideBarTabs:hover {
-    border: 1px solid black;
-}
-
-.sideBar {
-    width: 300px;
-    right: 0;
-    position: absolute;
-    z-index: 1;
-    margin: 0;
-    top: 50%;
-    transform: translateY(-50%);
 }
