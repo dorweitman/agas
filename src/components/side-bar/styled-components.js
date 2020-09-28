@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const SideBar = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid;
+    border: 1px solid darkseagreen;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;    
-    padding: 100px 0px 0px 0px; 
-    border-color: darkseagreen;
+    padding: 50px 0px 0px 0px; 
     border-right-color: white;
     background-color: rgba(232, 236, 241, 1);
     transition: 0.8s ease;

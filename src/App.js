@@ -7,7 +7,11 @@ import Logout from './components/auth/Logout';
 import AdminPage from './components/admin';
 
 import { translation } from './lib/config';
-import companyImg from './assets/images/agas.png'
+import companyImg from './assets/images/agas.png';
+import messageImg from './assets/images/message.jpg';
+import graphImg from './assets/images/graph.jpg';
+import personImg from './assets/images/person.jpg';
+import contactImg from './assets/images/contact.jpg';
 
 import './App.css'
 
@@ -26,11 +30,26 @@ const App = () => {
         <h2>{translation.hello + user.name}</h2>
         <div className='sideBar'>
           <SideBar>
-            <h2>{translation.individualPage}</h2>
-            <h2>{translation.feed}</h2>
-            <h2>{translation.graphs}</h2>
-            <h2>{translation.getInTouch}</h2>
-            <img id='companyImg' src={companyImg} alt='companyImg' />
+            <h2 className='sideBarTabs'>
+              <img className='sideBarImg' src={personImg} alt='personImg' />
+              {translation.individualPage}
+            </h2>
+            <h2 className='sideBarTabs'>
+              <img className='sideBarImg' src={messageImg} alt='personImg' />
+
+              {translation.feed}
+            </h2>
+            <h2 className='sideBarTabs'>
+              <img className='sideBarImg' src={graphImg} alt='personImg' />
+
+              {translation.graphs}
+            </h2>
+            <h2 className='sideBarTabs'>
+              <img className='sideBarImg' src={contactImg} alt='personImg' />
+
+              {translation.getInTouch}
+            </h2>
+            <img className='companyImg' src={companyImg} alt='companyImg' />
           </SideBar>
         </div>
         <AdminPage />
