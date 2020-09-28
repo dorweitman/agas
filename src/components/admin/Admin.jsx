@@ -3,17 +3,16 @@ import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-do
 
 import Tables from '../event/event';
 import Person from '../person/person';
+import { StyledNavLink } from './styled-components';
 
 import { translation } from '../../lib/config';
-
-import './admin.css';
 
 class AdminPage extends Component {
     render() {
         return (
             <Router>
-                <NavLink to='/person' className='navLink' activeClassName='navLinkActive'>{translation.soldier}</NavLink>
-                <NavLink to='/event' className='navLink' activeClassName='navLinkActive'>{translation.event}</NavLink>
+                <StyledNavLink to='/person'>{translation.soldier}</StyledNavLink>
+                <StyledNavLink to='/event'>{translation.event}</StyledNavLink>
                 <Switch>
                     <Route path='/person' component={Person} />
                     <Route path='/event' component={Tables} />

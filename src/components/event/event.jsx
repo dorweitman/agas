@@ -3,7 +3,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 import Table from '../table/table';
-import { Img } from './styled-components';
+import { Img, StyledNavLink } from './styled-components';
 
 import { route, runTableProperties, pushUpTableProperties } from './config';
 
@@ -22,12 +22,12 @@ const PushUpsTable = () => {
 
 const Tables = () => (
     <>
-        <NavLink exact to='/event/run' className='navLink card' activeClassName='borderAnimation'>
+        <StyledNavLink exact to='/event/run'>
             <Img src={runningImage} alt='runningImage' />
-        </NavLink>
-        <NavLink exact to='/event/pushUps' className='navLink card' activeClassName='borderAnimation'>
+        </StyledNavLink>
+        <StyledNavLink exact to='/event/pushUps'>
             <Img src={pushUpsImage} alt='pushUpsImage' />
-        </NavLink>
+        </StyledNavLink>
         <Switch>
             <Route path='/event/run' component={RunTable} />
             <Route path='/event/pushUps' component={PushUpsTable} />
