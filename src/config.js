@@ -13,6 +13,7 @@ const config = {
         individualPage: 'אזור אישי',
         feed: 'הודעות',
         graphs: 'גרפים',
+        getInTouch: 'צור קשר',
     }
 }; 
 

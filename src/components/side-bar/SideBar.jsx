@@ -10,11 +10,11 @@ class SideBarToggle extends Component {
 
     componentDidMount() {
         document.addEventListener('mousedown', this.handleClick, false);
-    }
+    };
 
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClick, false);
-    }
+    };
 
     handleClick = (e) => {
         if (this.node.contains(e.target)) {
@@ -24,7 +24,7 @@ class SideBarToggle extends Component {
         if (this.state.xPosition === 0) {
             this.toggleMenu();
         }
-    }
+    };
 
     toggleMenu = () => {
         const newXPosition = this.state.xPosition > 0 ? 0 : -width;

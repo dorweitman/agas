@@ -5,6 +5,13 @@ body {
     font-size: medium;
 }
 
+#companyImg {
+    margin: 90px auto 10px auto;
+    position: initial;  
+    height: 70px;
+    width: 70px;
+}
+
 h2 {
     float: right;
     background-color: darkseagreen;

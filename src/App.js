@@ -7,6 +7,7 @@ import Logout from './components/auth/Logout';
 import AdminPage from './components/admin';
 
 import { translation } from './config';
+import companyImg from './assets/images/agas.png'
 
 import './App.css'
 
@@ -14,7 +15,7 @@ const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
-    return <div>{translation.loading}</div>;
+    return <h2>{translation.loading}</h2>;
   }
 
   const login = () => <Login />;
@@ -28,6 +29,8 @@ const App = () => {
             <h2>{translation.individualPage}</h2>
             <h2>{translation.feed}</h2>
             <h2>{translation.graphs}</h2>
+            <h2>{translation.getInTouch}</h2>
+            <img id='companyImg' src={companyImg} alt='companyImg' />
           </SideBar>
         </div>
         <AdminPage />
