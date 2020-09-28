@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import { Img, Copyright, Page, Title, Button, Box } from './styled-components';
 
-import { translation } from '../../config';
+import { translation } from '../../lib/config';
 import logoImg from '../../assets/images/agas.png';
 
 const Login = () => {

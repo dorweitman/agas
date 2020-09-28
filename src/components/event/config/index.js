@@ -1,6 +1,6 @@
 import runProperties from './run';
 import pushUpProperties from './pushUps';
-import { formatDate } from '../../../utils';
+import { formatDate } from '../../../lib/utils';
 
 const date = {
     name: 'event_date',

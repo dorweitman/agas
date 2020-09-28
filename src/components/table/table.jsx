@@ -3,8 +3,8 @@ import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
 import { sendDataTranslation, propertyType, redErrorBorder, direction, badChars } from './config';
 import { createObject } from './transform';
-import { formatDate, formatMoment } from '../../utils';
-import { url } from '../../config';
+import { formatDate, formatMoment } from '../../lib/utils';
+import { url } from '../../lib/config';
 import { saveData } from '../../client';
 import {
     Button,

@@ -36,12 +36,10 @@ class SideBarToggle extends Component {
 
     render() {
         return (
-            <>
-                <SideBar style={{ transform: `translatex(${this.state.xPosition}px)` }} ref={node => this.node = node}>
-                    {this.props.children}
-                    <ToggleMenu onClick={this.toggleMenu} />
-                </SideBar>
-            </>
+            <SideBar style={{ transform: `translatex(${this.state.xPosition}px)` }} ref={node => this.node = node}>
+                {this.props.children}
+                <ToggleMenu onClick={this.toggleMenu} />
+            </SideBar>
         );
     }
 };

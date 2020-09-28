@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-do
 import Tables from './event/event';
 import Person from './person/person';
 
-import { translation } from '../config';
+import { translation } from '../lib/config';
 
 import './admin.css';
 

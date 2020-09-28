@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import { LogoutButton } from './styled-components';
 
-import { translation } from '../../config';
+import { translation } from '../../lib/config';
 
 const Logout = () => {
   const { logout } = useAuth0();

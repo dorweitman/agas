@@ -6,7 +6,7 @@ import SideBar from './components/side-bar/SideBar'
 import Logout from './components/auth/Logout';
 import AdminPage from './components/admin';
 
-import { translation } from './config';
+import { translation } from './lib/config';
 import companyImg from './assets/images/agas.png'
 
 import './App.css'
