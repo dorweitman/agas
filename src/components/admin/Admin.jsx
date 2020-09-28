@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
-import Tables from './event/event';
-import Person from './person/person';
+import Tables from '../event/event';
+import Person from '../person/person';
 
-import { translation } from '../lib/config';
+import { translation } from '../../lib/config';
 
 import './admin.css';
 
