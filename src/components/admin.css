@@ -1,14 +1,5 @@
-.nested {
+.card {
     background-color: white !important;
-}
-
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-3px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-3px); }
 }
 
 .navLink {
@@ -70,12 +61,13 @@
     }
 }
 
-.borderAnimation {    
+.borderAnimation {
+    border: 2px solid darkseagreen;    
     background-repeat: no-repeat;
-    background-image:   linear-gradient(to right, #4CAF50 100%, #4CAF50 100%),
-                        linear-gradient(to bottom, #4CAF50 100%, #4CAF50 100%),
-                        linear-gradient(to right, #4CAF50 100%, #4CAF50 100%),
-                        linear-gradient(to bottom, #4CAF50 100%, #4CAF50 100%);
+    background-image:   linear-gradient(to right, darkseagreen 100%, darkseagreen 100%),
+                        linear-gradient(to bottom, darkseagreen 100%, darkseagreen 100%),
+                        linear-gradient(to right, darkseagreen 100%, darkseagreen 100%),
+                        linear-gradient(to bottom, darkseagreen 100%, darkseagreen 100%);
     background-size:    100% 3px,
                         3px 100%,
                         100% 3px,

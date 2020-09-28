@@ -12,14 +12,12 @@ class AdminPage extends Component {
     render() {
         return (
             <Router>
-                <div>
-                    <NavLink to='/person' className='navLink' activeClassName='navLinkActive'>{translation.soldier}</NavLink>
-                    <NavLink to='/event' className='navLink' activeClassName='navLinkActive'>{translation.event}</NavLink>
-                    <Switch>
-                        <Route path='/person' component={Person} />
-                        <Route path='/event' component={Tables} />
-                    </Switch>
-                </div>
+                <NavLink to='/person' className='navLink' activeClassName='navLinkActive'>{translation.soldier}</NavLink>
+                <NavLink to='/event' className='navLink' activeClassName='navLinkActive'>{translation.event}</NavLink>
+                <Switch>
+                    <Route path='/person' component={Person} />
+                    <Route path='/event' component={Tables} />
+                </Switch>
             </Router>
         );
     };

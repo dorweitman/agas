@@ -22,10 +22,10 @@ const PushUpsTable = () => {
 
 const Tables = () => (
     <>
-        <NavLink exact to='/event/run' className='navLink nested' activeClassName='borderAnimation'>
+        <NavLink exact to='/event/run' className='navLink card' activeClassName='borderAnimation'>
             <Img src={runningImage} alt='runningImage' />
         </NavLink>
-        <NavLink exact to='/event/pushUps' className='navLink nested' activeClassName='borderAnimation'>
+        <NavLink exact to='/event/pushUps' className='navLink card' activeClassName='borderAnimation'>
             <Img src={pushUpsImage} alt='pushUpsImage' />
         </NavLink>
         <Switch>
