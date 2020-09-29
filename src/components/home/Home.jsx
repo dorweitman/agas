@@ -1,9 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import SideBar from '../side-bar/SideBar'
 import Logout from '../auth/Logout';
 import AdminPage from '../admin/Admin';
-import { App, SideBarImg, SideBarCompanyImg, UserNameHeader } from './styled-components';
+import { App, StyledNavLink, SideBarImg, SideBarCompanyImg, UserNameHeader } from './styled-components';
 
 import { translation } from '../../lib/config';
 
@@ -18,16 +19,24 @@ const HomePage = (props) => (
     <>
         <Logout />
         <UserNameHeader>{translation.hello + props.user.name}</UserNameHeader>
-        <SideBar>
-            <App><SideBarImg src={personImg} alt='personImg' />{translation.individualPage}</App>
-            <App><SideBarImg src={adminImg} alt='adminImg' />{translation.admin}</App>
-            <App><SideBarImg src={messageImg} alt='messageImg' />{translation.feed}</App>
-            <App><SideBarImg src={graphImg} alt='graphImg' />{translation.graphs}</App>
-            <App><SideBarImg src={contactImg} alt='contactImg' />{translation.getInTouch}</App>
-            <SideBarCompanyImg src={companyImg} alt='companyImg' />
-        </SideBar>
-        <AdminPage />
+        <Router>
+            <SideBar>
+                <StyledNavLink to='/admin'><SideBarImg src={adminImg} alt='adminImg' />{translation.admin}</StyledNavLink>
+                <StyledNavLink to='/individual'><SideBarImg src={personImg} alt='personImg' />{translation.individualPage}</StyledNavLink>
+                <App to='/graph'><SideBarImg src={graphImg} alt='graphImg' />{translation.graphs}</App>
+                <App to='/message'><SideBarImg src={messageImg} alt='messageImg' />{translation.feed}</App>
+                <App to='/contact'><SideBarImg src={contactImg} alt='contactImg' />{translation.getInTouch}</App>
+                <SideBarCompanyImg src={companyImg} alt='companyImg' />
+            </SideBar>
+            <Switch>
+                <Route path='/admin' component={AdminPage} />
+                <Route path='/individual' component={AdminPage} />
+                <Redirect exact from='/' to='/admin' />
+            </Switch>
+        </Router>
     </>
 );
+
+
 
 export default HomePage;

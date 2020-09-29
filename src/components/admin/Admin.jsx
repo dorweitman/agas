@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Tables from '../event/event';
 import Person from '../person/person';
@@ -7,19 +7,15 @@ import { StyledNavLink } from './styled-components';
 
 import { translation } from '../../lib/config';
 
-class AdminPage extends Component {
-    render() {
-        return (
-            <Router>
-                <StyledNavLink to='/person'>{translation.soldier}</StyledNavLink>
-                <StyledNavLink to='/event'>{translation.event}</StyledNavLink>
-                <Switch>
-                    <Route path='/person' component={Person} />
-                    <Route path='/event' component={Tables} />
-                </Switch>
-            </Router>
-        );
-    };
-}
+const AdminPage = () => (
+    <>
+        <StyledNavLink to='/admin/person'>{translation.soldier}</StyledNavLink>
+        <StyledNavLink to='/admin/event'>{translation.event}</StyledNavLink>
+        <Switch>
+            <Route path='/admin/person' component={Person} />
+            <Route path='/admin/event' component={Tables} />
+        </Switch>
+    </>
+);
 
 export default AdminPage; 

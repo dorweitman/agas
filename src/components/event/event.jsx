@@ -23,17 +23,17 @@ const PushUpsTable = () => {
 
 const Tables = () => (
     <>
-        <StyledNavLink exact to='/event/run'>
+        <StyledNavLink exact to='/admin/event/run'>
             <Img src={runningImage} alt='runningImage' />
             <EventNameHeader>{translation.baror}</EventNameHeader>
         </StyledNavLink>
-        <StyledNavLink exact to='/event/pushUps'>
+        <StyledNavLink exact to='/admin/event/pushUps'>
             <Img src={pushUpsImage} alt='pushUpsImage' />
             <EventNameHeader>{translation.pushUps}</EventNameHeader>
         </StyledNavLink>
         <Switch>
-            <Route path='/event/run' component={RunTable} />
-            <Route path='/event/pushUps' component={PushUpsTable} />
+            <Route path='/admin/event/run' component={RunTable} />
+            <Route path='/admin/event/pushUps' component={PushUpsTable} />
         </Switch>
     </>
 );

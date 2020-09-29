@@ -1,4 +1,23 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+
+export const StyledNavLink = styled(NavLink)`
+    background-color: white;
+    font-size: 20px;
+    font-weight: lighter;
+    color: darkseagreen;
+    padding: 2px 15px;
+    margin: 4px auto 4px auto;
+    border: none;
+    border-radius: 20px;
+    position: initial;  
+    top: 18px !important;  
+    text-align: center;
+    border: 1px solid darkseagreen;
+    :hover {
+        border: 1px solid black;
+    }
+`;
 
 export const App = styled.h2`
     background-color: white;
