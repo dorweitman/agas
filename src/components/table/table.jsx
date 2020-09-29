@@ -48,6 +48,10 @@ class Table extends Component {
             value = formatMoment(value);
         }
 
+        if (type === propertyType.number) {
+            value = +value;
+        }
+
         if (repetitive) {
             newObjectsArray = newObjectsArray.map(el => ({ ...el, [name]: value }));
         } else {
