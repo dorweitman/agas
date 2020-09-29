@@ -18,16 +18,6 @@ export const App = styled.h2`
     }
 `;
 
-export const SideBarWrapper = styled.div`
-    width: 300px;
-    right: 0;
-    position: absolute;
-    z-index: 1;
-    margin: 0;
-    top: 50%;
-    transform: translateY(-50%);
-`;
-
 export const SideBarImg = styled.img`
     position: initial;  
     height: 70px;

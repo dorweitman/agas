@@ -9,7 +9,10 @@ export const SideBar = styled.div`
     padding: 20px 0px 0px 0px; 
     border-right-color: white;
     background-color: rgba(232, 236, 241, 1);
-    transition: 0.8s ease;
+    transition: 0.5s ease;
+    width: 300px;
+    right: 0;
+    position: absolute;
 `;
 
 export const ToggleMenu = styled.button`
@@ -19,7 +22,6 @@ export const ToggleMenu = styled.button`
     width: 10px;
     position: absolute;
     outline: none;
-    z-index: 1;
     cursor: pointer;
     background-color: rgba(64, 194, 133, 0.693);
     border-color: rgba(64, 194, 133, 0.693);

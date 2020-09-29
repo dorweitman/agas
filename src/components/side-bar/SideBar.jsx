@@ -16,15 +16,20 @@ class SideBarToggle extends Component {
         document.removeEventListener('mousedown', this.handleClick, false);
     };
 
+    isSideBarOpen = () => {
+        return this.state.xPosition === 0;
+    };
+
     handleClick = (e) => {
         if (this.node.contains(e.target)) {
             return;
         }
 
-        if (this.state.xPosition === 0) {
+        if (this.isSideBarOpen()) {
             this.toggleMenu();
         }
     };
+
 
     toggleMenu = () => {
         const newXPosition = this.state.xPosition > 0 ? 0 : -width;
@@ -35,8 +40,10 @@ class SideBarToggle extends Component {
     };
 
     render() {
+        const style = { transform: `translatex(${this.state.xPosition}px)`, zIndex: `${this.state.xPosition === 0 ? 1 : -1}` };
+
         return (
-            <SideBar style={{ transform: `translatex(${this.state.xPosition}px)` }} ref={node => this.node = node}>
+            <SideBar style={style} ref={node => this.node = node}>
                 {this.props.children}
                 <ToggleMenu onClick={this.toggleMenu} />
             </SideBar>
