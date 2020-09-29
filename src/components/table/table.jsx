@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
-import { sendDataTranslation, propertyType, redErrorBorder, direction, badChars } from './config';
+import { propertyType, redErrorBorder, direction, badChars, disabledExcelButtonStyle } from './config';
 import { createObject } from './transform';
 import { formatDate, formatMoment } from '../../lib/utils';
 import { translation, url } from '../../lib/config';
-import { saveData } from '../../client';
+import { saveData, getData } from '../../client';
 import {
     Button,
     Input,
@@ -13,8 +13,11 @@ import {
     Row,
     TableProperties,
     TopRightCorner,
-    DeleteButton
+    DeleteButton,
+    ExcelImg,
 } from './styled-components';
+
+import excelImg from '../../assets/images/excel.png';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import 'rc-time-picker/assets/index.css';
@@ -24,6 +27,7 @@ class Table extends Component {
         objects: [createObject(this.props.properties)],
         deleteMode: false,
         sendDataMode: false,
+        sentSuccessfully: false,
     };
 
     getObjectKeys = () => {
@@ -105,7 +109,37 @@ class Table extends Component {
         saveData(`${url}/${this.props.route}`, this.state.objects)
             .then(res => {
                 console.log(res);
+
+                this.setState(prevState => ({
+                    sentSuccessfully: !prevState.sentSuccessfully
+                }));
             });
+    };
+
+    downloadExcelFile = () => {
+        getData(`${url}/export/${this.props.route}`, {
+            params: {
+                date: this.state.objects[0].event_date,
+                name: this.state.objects[0].name,
+            },
+        }).then(() => console.log('Excel saved.'))
+    };
+
+    exportToExcelButton = () => {
+        if (!this.props.exportToExcel) {
+            return;
+        }
+
+        const style = this.state.sentSuccessfully ? {} : disabledExcelButtonStyle; 
+
+        return (
+            <Button
+                style={style}
+                disabled={!this.state.sentSuccessfully}
+                onClick={this.downloadExcelFile}>
+                <ExcelImg src={excelImg} />
+            </Button>
+        );
     };
 
     render() {
@@ -151,10 +185,11 @@ class Table extends Component {
 
         const addRowsButton = <Button onClick={this.addRowButtonHandler}>+</Button>;
         const removeRowsButton = <Button onClick={this.removeRowOptionHandler}>-</Button>;
-        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{translation.sendData}</Button>
+        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{translation.sendData}</Button>;
 
         return (
             <>
+                {this.exportToExcelButton()}
                 {sendDataButton}
                 {addRowsButton}
                 {removeRowsButton}

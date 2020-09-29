@@ -8,17 +8,17 @@ const instance = axios.create({
     },
 });
 
-export const saveData = async (url, data) => {
+export const saveData = async (url, data, config = {}) => {
     try {
-        return instance.post(url, data);
+        return instance.post(url, data, config);
     } catch (error) {
         console.error(error);
     }
 };
 
-export const getData = async (url) => {
+export const getData = async (url, config = {}) => {
     try {
-        return instance.get(url);
+        return instance.get(url, config);
     } catch (error) {
         console.error(error);
     }

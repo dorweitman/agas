@@ -14,11 +14,11 @@ import runningImage from '../../assets/images/runner.jpg';
 const RunTable = () => {
     const defaultTime = moment().startOf('day');
 
-    return <Table properties={runTableProperties} defaultTime={defaultTime} route={route.run} />;
+    return <Table properties={runTableProperties} defaultTime={defaultTime} route={route.run} exportToExcel />;
 };
 
 const PushUpsTable = () => {
-    return <Table properties={pushUpTableProperties} route={route.pushUps} />;
+    return <Table properties={pushUpTableProperties} route={route.pushUps} exportToExcel />;
 };
 
 const Tables = () => (

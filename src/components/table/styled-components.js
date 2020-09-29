@@ -78,3 +78,9 @@ export const Row = styled.td`
   text-align: center;
   font: 16px Arial, sans-serif;
 `;
+
+export const ExcelImg = styled.img` 
+    height: 35px;
+    width: 35px;
+    float: left;
+`;
