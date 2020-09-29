@@ -16,7 +16,7 @@ class IndividualPage extends Component {
 
     componentDidMount() {
         getData(`${url}/${route}`).then(res => {
-            const persons = res.data;
+            const persons = res.data.matches;
 
             this.setState({ persons });
         });
