@@ -146,6 +146,10 @@ class Table extends Component {
         );
     };
 
+    sendDataButtonText = () => {
+        return this.state.sentSuccessfully ? translation.dataSentSuccessfully : translation.sendData;
+    };
+
     render() {
         const tableProperties = this.getObjectKeys().map(title => <TableProperties key={title}>{title}</TableProperties>);
 
@@ -189,7 +193,7 @@ class Table extends Component {
 
         const addRowsButton = <Button onClick={this.addRowButtonHandler}>+</Button>;
         const removeRowsButton = <Button onClick={this.removeRowOptionHandler}>-</Button>;
-        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{translation.sendData}</Button>;
+        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{this.sendDataButtonText()}</Button>;
 
         return (
             <>
