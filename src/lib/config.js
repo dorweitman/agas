@@ -17,6 +17,7 @@ const config = {
         admin: 'מנהל',
         baror: 'ריצת בר-אור',
         pushUps: 'שכיבות סמיכה',
+        communityRun: 'ריצה משותפת',
     },
 }; 
 

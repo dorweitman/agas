@@ -11,6 +11,7 @@ export const StyledNavLink = styled(NavLink)`
     border: none;
     border-radius: 20px;
     position: initial;  
+    text-decoration: none;
     top: 18px !important;  
     text-align: center;
     border: 1px solid darkseagreen;

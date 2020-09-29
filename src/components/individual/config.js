@@ -1,0 +1,1 @@
+export const route = 'community/8631354';

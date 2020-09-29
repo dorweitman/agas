@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import SideBar from '../side-bar/SideBar'
 import Logout from '../auth/Logout';
 import AdminPage from '../admin/Admin';
+import IndividualPage from '../individual/Individual';
 import { App, StyledNavLink, SideBarImg, SideBarCompanyImg, UserNameHeader } from './styled-components';
 
 import { translation } from '../../lib/config';
@@ -30,13 +31,11 @@ const HomePage = (props) => (
             </SideBar>
             <Switch>
                 <Route path='/admin' component={AdminPage} />
-                <Route path='/individual' component={AdminPage} />
+                <Route path='/individual' component={IndividualPage} />
                 <Redirect exact from='/' to='/admin' />
             </Switch>
         </Router>
     </>
 );
-
-
 
 export default HomePage;
