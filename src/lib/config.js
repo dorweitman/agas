@@ -19,6 +19,7 @@ const config = {
         baror: 'ריצת בר-אור',
         pushUps: 'שכיבות סמיכה',
         communityRun: 'ריצה משותפת',
+        sendData: 'שלח/י מידע',
     },
 }; 
 

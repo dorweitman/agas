@@ -4,7 +4,7 @@ import TimePicker from 'rc-time-picker';
 import { sendDataTranslation, propertyType, redErrorBorder, direction, badChars } from './config';
 import { createObject } from './transform';
 import { formatDate, formatMoment } from '../../lib/utils';
-import { url } from '../../lib/config';
+import { translation, url } from '../../lib/config';
 import { saveData } from '../../client';
 import {
     Button,
@@ -151,7 +151,7 @@ class Table extends Component {
 
         const addRowsButton = <Button onClick={this.addRowButtonHandler}>+</Button>;
         const removeRowsButton = <Button onClick={this.removeRowOptionHandler}>-</Button>;
-        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{sendDataTranslation}</Button>
+        const sendDataButton = <Button onClick={this.sendDataButtonHandler}>{translation.sendData}</Button>
 
         return (
             <>
