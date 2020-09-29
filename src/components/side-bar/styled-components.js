@@ -13,6 +13,7 @@ export const SideBar = styled.div`
     width: 300px;
     right: 0;
     position: absolute;
+    opacity: 0.9;
 `;
 
 export const ToggleMenu = styled.button`

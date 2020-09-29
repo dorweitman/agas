@@ -40,7 +40,10 @@ class SideBarToggle extends Component {
     };
 
     render() {
-        const style = { transform: `translatex(${this.state.xPosition}px)`, zIndex: `${this.state.xPosition === 0 ? 1 : -1}` };
+        const style = {
+            transform: `translatex(${this.state.xPosition}px)`,
+            zIndex: `${this.state.xPosition === 0 ? 1 : -1}`,
+        };
 
         return (
             <SideBar style={style} ref={node => this.node = node}>
