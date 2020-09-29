@@ -3,8 +3,8 @@ const config = {
     event: '/event',
     person: '/person',
     translation: {
-        soldier: 'חייל/ת',
-        event: 'אירוע',
+        soldier: 'הוסף חייל/ת',
+        event: 'בחר אירוע',
         logout: 'התנתק',
         login: 'התחבר',
         loading: 'טוען...',
@@ -15,7 +15,9 @@ const config = {
         graphs: 'גרפים',
         getInTouch: 'צור קשר',
         admin: 'מנהל',
-    }
+        baror: 'ריצת בר-אור',
+        pushUps: 'שכיבות סמיכה',
+    },
 }; 
 
 module.exports = config; 

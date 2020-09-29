@@ -79,3 +79,18 @@ export const StyledNavLink = styled(NavLink)`
         } 
     } 
 `;
+
+export const EventNameHeader = styled.h2`
+    float: right;
+    background-color: darkseagreen;
+    font-size: 20px;
+    font-weight: lighter;
+    color: white;
+    padding: 2px 15px;
+    margin: 4px 4px 4px 50%;
+    border: none;
+    border-radius: 4px;
+    position: initial;  
+    top: 18px !important;  
+    text-align: center;
+`;
