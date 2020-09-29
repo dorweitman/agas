@@ -14,18 +14,19 @@ export const SideBar = styled.div`
     right: 0;
     position: absolute;
     opacity: 0.9;
+    z-index: 1;
 `;
 
 export const ToggleMenu = styled.button`
-    height: 100px;
+    height: 120px;
     border-top-left-radius: 10rem;
     border-bottom-left-radius: 9rem;
-    width: 10px;
+    width: 20px;
     position: absolute;
     outline: none;
     cursor: pointer;
-    background-color: rgba(64, 194, 133, 0.693);
-    border-color: rgba(64, 194, 133, 0.693);
+    background-color: #F8901F;
+    border-color: #F8901F;
     border-left: 0;
     transform: translate(-300px, 15vh);
 `;
