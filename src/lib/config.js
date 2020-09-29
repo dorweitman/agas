@@ -2,6 +2,7 @@ const config = {
     url: 'http://localhost:5000',
     event: '/event',
     person: '/person',
+    userId: '8631354',
     translation: {
         soldier: 'הוסף חייל/ת',
         event: 'בחר אירוע',

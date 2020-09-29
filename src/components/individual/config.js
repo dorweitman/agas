@@ -1,1 +1,3 @@
-export const route = 'community/8631354';
+import { userId } from '../../lib/config';
+
+export const route = `community/${userId}`;
