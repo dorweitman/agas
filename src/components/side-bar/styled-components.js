@@ -6,11 +6,11 @@ export const SideBar = styled.div`
     border: 1px solid darkseagreen;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;    
-    padding: 20px 0px 0px 0px; 
+    padding: 15px 0px 0px 0px; 
     border-right-color: white;
     background-color: rgba(232, 236, 241, 1);
     transition: 0.5s ease;
-    width: 300px;
+    width: 160px;
     right: 0;
     position: absolute;
     opacity: 0.9;
@@ -28,5 +28,5 @@ export const ToggleMenu = styled.button`
     background-color: #F8901F;
     border-color: #F8901F;
     border-left: 0;
-    transform: translate(-300px, 15vh);
+    transform: translate(-160px, 15vh);
 `;

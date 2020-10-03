@@ -21,6 +21,7 @@ const config = {
         communityRun: 'ריצה משותפת',
         sendData: 'שלח/י מידע',
         dataSentSuccessfully: 'המידע נשמר בהצלחה',
+        searchBar: 'חיפוש',
     },
 }; 
 

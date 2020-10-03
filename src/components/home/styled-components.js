@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const StyledNavLink = styled(NavLink)`
     background-color: white;
     font-size: 20px;
+    width: 75px;
     font-weight: lighter;
     color: darkseagreen;
     padding: 2px 15px;
@@ -22,6 +23,7 @@ export const StyledNavLink = styled(NavLink)`
 
 export const App = styled.h2`
     background-color: white;
+    width: 75px;
     font-size: 20px;
     font-weight: lighter;
     color: darkseagreen;
@@ -40,15 +42,15 @@ export const App = styled.h2`
 
 export const SideBarImg = styled.img`
     position: initial;  
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 `;
 
 export const SideBarCompanyImg = styled.img`
-    margin: 70px auto 10px auto;
+    margin: 40px auto 10px auto;
     position: initial;  
     height: 50px;
     width: 50px;

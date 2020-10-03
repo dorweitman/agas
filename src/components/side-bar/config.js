@@ -1,2 +1,2 @@
-export const width = -300; 
-export const defaultXPosition = 300;
+export const width = -160; 
+export const defaultXPosition = 160;
