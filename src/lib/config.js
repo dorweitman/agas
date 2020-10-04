@@ -22,6 +22,7 @@ const config = {
         sendData: 'שלח/י מידע',
         dataSentSuccessfully: 'המידע נשמר בהצלחה',
         searchBar: 'חיפוש',
+        searchBarPlaceholder: 'הזן נתוני חיפוש...',
     },
 }; 
 
