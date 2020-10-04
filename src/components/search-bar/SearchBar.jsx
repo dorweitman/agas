@@ -30,7 +30,7 @@ class SearchBar extends Component {
         return tableCells;
     }
 
-    getTableHeaders = (object) => {
+    getTableHeaders = (object = {}) => {
         return Object.keys(object).map(key => <TableHeaderCell>{key}</TableHeaderCell>);
     }
 
