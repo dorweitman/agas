@@ -48,8 +48,7 @@ export const Table = styled.table`
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 80%;
-    margin-top: 5%;
-    margin: auto;
+    margin: 5% auto;
 `;
 
 const cell = css`
