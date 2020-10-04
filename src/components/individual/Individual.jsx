@@ -4,7 +4,6 @@ import { Img, Title, People } from './styled-components';
 
 import { translation } from '../../lib/config';
 import { route } from './config';
-import { url } from '../../lib/config';
 import { getData } from '../../client';
 
 import groupImg from '../../assets/images/group.jpg';
@@ -15,7 +14,7 @@ class IndividualPage extends Component {
     }
 
     componentDidMount() {
-        getData(`${url}/${route}`).then(res => {
+        getData(route).then(res => {
             const persons = res.data.matches;
 
             this.setState({ persons });

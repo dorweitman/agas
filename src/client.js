@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import config from './lib/config';
 
 const instance = axios.create({
@@ -8,7 +9,7 @@ const instance = axios.create({
     },
 });
 
-export const saveData = async (url, data, config = {}) => {
+export const saveData = (url, data, config = {}) => {
     try {
         return instance.post(url, data, config);
     } catch (error) {
@@ -16,7 +17,7 @@ export const saveData = async (url, data, config = {}) => {
     }
 };
 
-export const getData = async (url, config = {}) => {
+export const getData = (url, config = {}) => {
     try {
         return instance.get(url, config);
     } catch (error) {

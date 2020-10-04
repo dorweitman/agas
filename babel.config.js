@@ -8,7 +8,8 @@ module.exports = function (api) {
     const plugins = [
         '@babel/plugin-proposal-class-properties',
         'babel-plugin-styled-components',
-        '@babel/plugin-transform-runtime'
+        '@babel/plugin-transform-runtime',
+        '@babel/plugin-proposal-optional-chaining',
     ];
 
     return { presets, plugins };

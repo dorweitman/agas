@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
+
 import { propertyType, redErrorBorder, direction, badChars, disabledExcelButtonStyle } from './config';
-import { createObject } from './transform';
-import { formatDate, formatMoment } from '../../lib/utils';
-import { translation, url } from '../../lib/config';
+import { createObject, formatValue } from './util';
+import { translation } from '../../lib/config';
 import { saveData, getData } from '../../client';
+
 import {
     Button,
     Input,
@@ -36,21 +37,9 @@ class Table extends Component {
 
     updateInputValue = (e, index, property) => {
         const { repetitive, type, name } = property;
-
-        let value = e.target ? e.target.value : e;
+        const value = formatValue(type, e?.target?.value || e); 
+        
         let newObjectsArray = [...this.state.objects];
-
-        if (type === propertyType.date) {
-            value = formatDate(value);
-        }
-
-        if (type === propertyType.timer) {
-            value = formatMoment(value);
-        }
-
-        if (type === propertyType.number) {
-            value = +value;
-        }
 
         if (repetitive) {
             newObjectsArray = newObjectsArray.map(el => ({ ...el, [name]: value }));
@@ -108,9 +97,7 @@ class Table extends Component {
             return;
         }
 
-        console.log(this.state.objects);
-
-        saveData(`${url}/${this.props.route}`, this.state.objects)
+        saveData(this.props.route, this.state.objects)
             .then(res => {
                 console.log(res);
 
@@ -121,10 +108,12 @@ class Table extends Component {
     };
 
     downloadExcelFile = () => {
-        getData(`${url}/export/${this.props.route}`, {
+        const { name, event_date: date } = this.state.objects[0];
+
+        getData(`export/${this.props.route}`, {
             params: {
-                date: this.state.objects[0].event_date,
-                name: this.state.objects[0].name,
+                date,
+                name,
             },
         }).then(() => console.log('Excel saved.'))
     };
