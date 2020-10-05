@@ -48,12 +48,22 @@ class SearchBar extends Component {
     }
 
     createTableLayout = ([tableName, array], index) => {
-        const shouldDisplayTable = !!this.state.buttons[index] && array.length > 0; 
+        const shouldDisplayTable = !!this.state.buttons[index];
+        const doesTableContainData = array.length > 0;
+        
+        if (!doesTableContainData) {
+            return;
+        }
 
         const tableHeader = <TableHeader key={tableName} onClick={() => this.tableHeaderHandler(index)}>{tableName}</TableHeader>;
+
+        if (!shouldDisplayTable) {
+            return tableHeader;
+        }
+
         const table = this.createTable(tableName, array);
 
-        return shouldDisplayTable && <>{tableHeader}{table}</>;
+        return <>{tableHeader}{table}</>;
     }
 
     createTables = () => {
@@ -79,7 +89,7 @@ class SearchBar extends Component {
             }
         }).then(res => {
             const result = res.data;
-            const numOfPropertiesInObject = Object.keys(result).length; 
+            const numOfPropertiesInObject = Object.keys(result).length;
             const buttons = new Array(numOfPropertiesInObject).fill(true);
 
             this.setState({
