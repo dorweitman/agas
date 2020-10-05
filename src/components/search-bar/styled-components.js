@@ -52,7 +52,7 @@ export const Table = styled.table`
 `;
 
 const cell = css`
-    text-align: left;
+    text-align: center;
     padding: 8px;
 `;
 
