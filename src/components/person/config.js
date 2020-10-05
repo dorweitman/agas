@@ -38,6 +38,12 @@ const firstname = {
     default: '',
     type: 'text',
 };
+const phoneNumber = {
+    name: 'phone',
+    translation: 'מספר טלפון',
+    default: ' ',
+    type: 'text',
+};
 
 const route = 'person';
 const properties = [
@@ -46,6 +52,7 @@ const properties = [
     team,
     id,
     birthDate,
+    phoneNumber,
     gender,
 ];
 

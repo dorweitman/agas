@@ -14,6 +14,7 @@ import {
     TableHeaderCell,
     TableCell,
     Row,
+    TableHeader,
 } from './styled-components';
 
 class SearchBar extends Component {
@@ -34,19 +35,22 @@ class SearchBar extends Component {
         return Object.keys(object).map(key => <TableHeaderCell>{key}</TableHeaderCell>);
     }
 
-    createTable = (array) => {
+    createTable = ([tableName, array]) => {
         return (
-            <Table>
-                <tbody>
-                    <Row>{this.getTableHeaders(array[0])}</Row>
-                    {this.getTableCells(array)}
-                </tbody>
-            </Table>
+            <>
+                <TableHeader>{tableName}</TableHeader>
+                <Table>
+                    <tbody>
+                        <Row>{this.getTableHeaders(array[0])}</Row>
+                        {this.getTableCells(array)}
+                    </tbody>
+                </Table>
+            </>
         );
     }
 
     createTables = () => {
-        return Object.values(this.state.result).map(this.createTable);
+        return Object.entries(this.state.result).map(this.createTable);
     }
 
     onChangeHandler = (e) => {
@@ -79,8 +83,8 @@ class SearchBar extends Component {
                             placeholder={translation.searchBarPlaceholder}
                             onChange={this.onChangeHandler}
                         />
-                    </SearchBox>;
-                </Header>;
+                    </SearchBox>
+                </Header>
                 {this.createTables()}
             </Wrapper>
         );

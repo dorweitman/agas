@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
 
 export const Header = styled.div`
     background: #4CAF50;
-    margin-bottom: 3%;
 `;
 
 export const Title = styled.div`
@@ -25,9 +24,10 @@ export const SearchBox = styled.div`
     margin: 0 auto;
     padding: 25px 0 50px;
     border-radius: 3px;
-`;
+    `;
 
 export const SearchInput = styled.input`
+    text-align: center; 
     border: 0;
     border-bottom: 2px solid #e5edfa;
     width: 100%;
@@ -48,7 +48,7 @@ export const Table = styled.table`
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 80%;
-    margin: 5% auto;
+    margin: 0px auto 3% auto;
 `;
 
 const cell = css`
@@ -70,4 +70,15 @@ export const Row = styled.tr`
     background: #fff;
     padding: 15px 0;
     height: 50px;   
+`;
+
+export const TableHeader = styled.title`
+    width: 80%;
+    margin: 3% auto 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4CAF50;
+    padding: 1% 0px;
+    font-weight: bold;
 `;

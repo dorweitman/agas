@@ -37,7 +37,8 @@ class Table extends Component {
 
     updateInputValue = (e, index, property) => {
         const { repetitive, type, name } = property;
-        const value = formatValue(type, e?.target?.value || e); 
+        const input = e.target ? e.target.value : e;
+        const value = formatValue(type, input); 
         
         let newObjectsArray = [...this.state.objects];
 
