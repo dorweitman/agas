@@ -72,7 +72,7 @@ export const Row = styled.tr`
     height: 50px;   
 `;
 
-export const TableHeader = styled.title`
+export const TableHeader = styled.button`
     width: 80%;
     margin: 3% auto 0px auto;
     display: flex;
@@ -81,4 +81,5 @@ export const TableHeader = styled.title`
     background-color: #4CAF50;
     padding: 1% 0px;
     font-weight: bold;
+    cursor: pointer;
 `;
