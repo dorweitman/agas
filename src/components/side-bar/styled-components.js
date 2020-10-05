@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const SideBar = styled.div`
     display: flex;
+    top: 10px;
     flex-direction: column;
     border: 1px solid darkseagreen;
     border-top-left-radius: 12px;
@@ -12,7 +13,7 @@ export const SideBar = styled.div`
     transition: 0.5s ease;
     width: 160px;
     right: 0;
-    position: absolute;
+    position: fixed;
     opacity: 0.9;
     z-index: 1;
 `;
