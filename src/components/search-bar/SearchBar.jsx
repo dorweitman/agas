@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
-import { translation } from '../../lib/config';
-import { route } from './config';
-import { getData } from '../../client';
+import { translation, text } from '../../lib/config';
+import { route, tableNames } from './config';
+import { getData, saveData } from '../../client';
+
+import { properties as personProperties } from '../person/config';
+import { eventProperties } from '../event/config';
 
 import {
     SearchBox,
@@ -15,7 +18,13 @@ import {
     TableCell,
     Row,
     TableHeader,
+    AgasImg,
+    Button,
+    ExcelImg,
 } from './styled-components';
+
+import agasImg from '../../assets/images/agas.png';
+import excelImg from '../../assets/images/excel.png';
 
 class SearchBar extends Component {
     state = {
@@ -26,21 +35,34 @@ class SearchBar extends Component {
 
     getTableCells = (array) => {
         const tableCells = array.map((element) => (
-            <Row>{Object.values(element).map((value) => <TableCell>{value.toString()}</TableCell>)}</Row>
+            <Row>{Object.values(element).map((value, index) => <TableCell key={index+value.toString}>{value.toString()}</TableCell>)}</Row>
         ));
 
         return tableCells;
     }
 
-    getTableHeaders = (object = {}) => {
-        return Object.keys(object).map((key) => <TableHeaderCell>{key}</TableHeaderCell>);
+    translateKey = (key) => {
+        const properties = [...tableNames, ...personProperties, ...eventProperties];
+
+        for (const property of properties) {
+            if (property.name === key) {
+                return property.translation;
+            }
+        }
+
+        return key;
+
     }
 
-    createTable = (tableName, array) => {
+    getTableHeaders = (object = {}) => {
+        return Object.keys(object).map((key) => <TableHeaderCell>{this.translateKey(key)}</TableHeaderCell>);
+    }
+
+    createTable = (array) => {
         return (
             <Table>
                 <tbody>
-                    <Row key={tableName}>{this.getTableHeaders(array[0])}</Row>
+                    <Row>{this.getTableHeaders(array[0])}</Row>
                     {this.getTableCells(array)}
                 </tbody>
             </Table>
@@ -50,18 +72,22 @@ class SearchBar extends Component {
     createTableLayout = ([tableName, array], index) => {
         const shouldDisplayTable = !!this.state.buttons[index];
         const doesTableContainData = array.length > 0;
-        
+
         if (!doesTableContainData) {
             return;
         }
 
-        const tableHeader = <TableHeader key={tableName} onClick={() => this.tableHeaderHandler(index)}>{tableName}</TableHeader>;
+        const button = <Button onClick={() => this.downloadExcelFile(array)}><ExcelImg src={excelImg} /></Button>;
+        const tableHeader = <TableHeader key={tableName} onClick={() => this.tableHeaderHandler(index)}>
+            {this.translateKey(tableName)}
+            {button}
+        </TableHeader>; 
 
         if (!shouldDisplayTable) {
             return tableHeader;
         }
 
-        const table = this.createTable(tableName, array);
+        const table = this.createTable(array);
 
         return <>{tableHeader}{table}</>;
     }
@@ -69,6 +95,10 @@ class SearchBar extends Component {
     createTables = () => {
         return Object.entries(this.state.result).map(this.createTableLayout);
     }
+
+    downloadExcelFile = (array) => {
+        saveData(`export`, array).then(() => console.log('Excel saved.'))
+    };
 
     tableHeaderHandler = (index) => {
         let newbuttons = [...this.state.buttons];
@@ -101,7 +131,10 @@ class SearchBar extends Component {
     }
 
     render() {
-        const title = <Title>{translation.searchBar}</Title>;
+        const title = <Title>
+            {text.search}
+            <AgasImg src={agasImg} alt='agasImg' />
+        </Title>;
 
         return (
             <Wrapper>

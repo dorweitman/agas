@@ -23,7 +23,7 @@ class IndividualPage extends Component {
 
     render() {
         const people = this.state.persons.map((person, index) =>
-            <People key={index}>{`${person.first_name} ${person.last_name} : ${person.duration}`}</People>
+            <People key={index}>{`${person.name} : ${person.duration}`}</People>
         );
 
         return (

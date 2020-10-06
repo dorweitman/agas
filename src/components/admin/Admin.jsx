@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Tables from '../event/event';
-import Person from '../person/person';
+import Tables from '../event/Event';
+import Person from '../person/Person';
 import { StyledNavLink } from './styled-components';
 
 import { translation } from '../../lib/config';

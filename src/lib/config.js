@@ -24,6 +24,9 @@ const config = {
         searchBar: 'חיפוש',
         searchBarPlaceholder: 'הזן נתוני חיפוש...',
     },
+    text: {
+        search: 'Search',
+    },
 }; 
 
 module.exports = config; 

@@ -11,10 +11,10 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.div`
-    padding: 50px 0;
+    padding: 50px 0px 10px 0px;
     text-align: center;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 76px;
     color: #fff;
 `;
 
@@ -72,7 +72,7 @@ export const Row = styled.tr`
     height: 50px;   
 `;
 
-export const TableHeader = styled.button`
+export const TableHeader = styled.div`
     width: 80%;
     margin: 3% auto 0px auto;
     display: flex;
@@ -82,4 +82,32 @@ export const TableHeader = styled.button`
     padding: 1% 0px;
     font-weight: bold;
     cursor: pointer;
+    font-size: 17px;
+    position: relative; 
+`;
+
+export const AgasImg = styled.img`
+    margin: auto;
+    position: initial;  
+    width: 4%;
+`;
+
+export const ExcelImg = styled.img` 
+    height: 25px;
+    width: 25px;
+`;
+
+export const Button = styled.button`
+    background-color: darkseagreen;
+    color: white;
+    border: none;
+    float: left;
+    left: 10px;
+    position: absolute; 
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 auto;
+    :hover {
+        background-color: #45a049;
+    }
 `;
