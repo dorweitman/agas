@@ -34,8 +34,10 @@ class SearchBar extends Component {
     }
 
     getTableCells = (array) => {
-        const tableCells = array.map((element) => (
-            <Row>{Object.values(element).map((value, index) => <TableCell key={index+value.toString}>{value.toString()}</TableCell>)}</Row>
+        const tableCells = array.map((element, arrIndex) => (
+            <Row key={arrIndex}>
+                {Object.values(element).map((value, objIndex) => <TableCell key={objIndex}>{value.toString()}</TableCell>)}
+            </Row>
         ));
 
         return tableCells;
@@ -51,11 +53,10 @@ class SearchBar extends Component {
         }
 
         return key;
-
     }
 
     getTableHeaders = (object = {}) => {
-        return Object.keys(object).map((key) => <TableHeaderCell>{this.translateKey(key)}</TableHeaderCell>);
+        return Object.keys(object).map((key, index) => <TableHeaderCell key={index}>{this.translateKey(key)}</TableHeaderCell>);
     }
 
     createTable = (array) => {
@@ -81,7 +82,7 @@ class SearchBar extends Component {
         const tableHeader = <TableHeader key={tableName} onClick={() => this.tableHeaderHandler(index)}>
             {this.translateKey(tableName)}
             {button}
-        </TableHeader>; 
+        </TableHeader>;
 
         if (!shouldDisplayTable) {
             return tableHeader;
@@ -89,7 +90,7 @@ class SearchBar extends Component {
 
         const table = this.createTable(array);
 
-        return <>{tableHeader}{table}</>;
+        return <div key={index}>{tableHeader}{table}</div>;
     }
 
     createTables = () => {
