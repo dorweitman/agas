@@ -40,7 +40,7 @@ const otherProperties = [
     },
     {
         name: 'distance',
-        translation: "מרחק (קמ')",
+        translation: 'מרחק (ק"מ)',
     },
     {
         name: 'passed',
@@ -52,7 +52,7 @@ const otherProperties = [
     },
     {
         name: 'duration',
-        translation: "זמן ריצה (דק':שנ')",
+        translation: "זמן ריצה",
     },
     {
         name: 'years_old',
