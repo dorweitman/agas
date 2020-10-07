@@ -1,5 +1,3 @@
-const moment = require('moment');
-
 const formatDate = (dateInput) => {
     const date = new Date(dateInput);
     const year = date.getFullYear();
@@ -22,7 +20,12 @@ const formatMoment = (moment) => {
     return moment.format('hh:mm:ss');
 };
 
-module.exports = {
+const isBoolean = (val) => {
+    return typeof val === 'boolean';
+};
+
+export {
     formatDate,
     formatMoment,
+    isBoolean,
 };

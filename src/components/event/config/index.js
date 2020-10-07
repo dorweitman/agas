@@ -44,7 +44,7 @@ const otherProperties = [
     },
     {
         name: 'passed',
-        translation: 'עבר'
+        translation: 'סטטוס'
     },
     {
         name: 'grade',

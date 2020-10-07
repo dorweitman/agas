@@ -13,4 +13,11 @@ export const tableNames = [
     },
 ];
 
+export const translateBoolean = (value) => {
+    const passed = 'עבר';
+    const notPassed = 'לא עבר';
+
+    return value ? passed : notPassed;
+}
+
 export const route = 'search';

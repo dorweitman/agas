@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import { translation, text } from '../../lib/config';
-import { route, tableNames } from './config';
+import { route, tableNames, translateBoolean } from './config';
 import { getData, saveData } from '../../client';
+import { isBoolean } from '../../lib/utils';
 
 import { properties as personProperties } from '../person/config';
 import { eventProperties } from '../event/config';
@@ -36,7 +37,16 @@ class SearchBar extends Component {
     getTableCells = (array) => {
         const tableCells = array.map((element, arrIndex) => (
             <Row key={arrIndex}>
-                {Object.values(element).map((value, objIndex) => <TableCell key={objIndex}>{value.toString()}</TableCell>)}
+                {Object.values(element).map((value, objIndex) => {
+                    const style = {};
+
+                    if (isBoolean(value)) {
+                        style.color = !!value ? 'green' : 'red';
+                        value = translateBoolean(value);
+                    }
+
+                    return <TableCell style={style} key={objIndex}>{value.toString()}</TableCell>;
+                })}
             </Row>
         ));
 
